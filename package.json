@@ -1,0 +1,38 @@
+{
+  "name": "auto-abort",
+  "version": "1.0.0",
+  "description": "Only keep a single instance, aborting previous instances on subsequent calls",
+  "main": "index.js",
+  "scripts": {
+    "test": "browserify test.js | tape-run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emilbayes/auto-abort.git"
+  },
+  "keywords": [
+    "abort",
+    "xhr",
+    "xdr",
+    "d3.json",
+    "d3.csv",
+    "d3.csv",
+    "d3.ajax",
+    "ajax",
+    "auto",
+    "singleton",
+    "http"
+  ],
+  "author": "Emil Bay <github@tixz.dk>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emilbayes/auto-abort/issues"
+  },
+  "homepage": "https://github.com/emilbayes/auto-abort#readme",
+  "devDependencies": {
+    "browserify": "^13.1.0",
+    "tape": "^4.6.0",
+    "tape-run": "^2.1.4",
+    "xhr": "^2.2.2"
+  }
+}
