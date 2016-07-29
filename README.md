@@ -1,6 +1,6 @@
 # `auto-abort`
 
-> Only keep a single instance, aborting previous instances on subsequent calls
+> Only keep a single instance, `.abort()`ing previous instances on subsequent calls
 
 ## Install
 

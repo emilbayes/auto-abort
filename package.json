@@ -1,7 +1,7 @@
 {
   "name": "auto-abort",
   "version": "1.0.0",
-  "description": "Only keep a single instance, aborting previous instances on subsequent calls",
+  "description": "Only keep a single instance, `.abort()`ing previous instances on subsequent calls",
   "main": "index.js",
   "scripts": {
     "test": "browserify test.js | tape-run"
