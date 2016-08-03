@@ -1,6 +1,6 @@
 # `auto-abort`
 
-> Only keep a single instance, `.abort()`ing previous instances on subsequent calls
+> Only keep a single instance, aborting previous instances on subsequent calls
 
 ## Install
 
@@ -25,18 +25,25 @@ function handleResponse (err, data, res) {
 
 ## API
 
-### `autoXhr(fn)`
+### `autoAbort(fn, [abortHandler])`
 
 Wraps `fn` with a function that will only keep a single instance of whatever `fn`
 returns around, calling `.abort()` on the previous instance before calling
-`fn` again. Unless you use something like `unassertify`, the return value of `fn`
-will also be checked for an `.abort()` function on each call.
+`fn` again. If you need to call another function than `.abort()`, use the
+`abortHandler`.
 
 #### `fn`
 Type: `Function`
 
-The function to wrap. The function MUST return an object with an `.abort()`
-method, examples being `xhr` and `d3.json`
+The function to wrap. Examples being `xhr` and `d3.json`
+
+#### `abortHandler`
+Type: `Function`<br>
+Default: `function (instance) { return instance.abort() }`
+
+Allows you to abort the instance manually, eg. if you need to do some other
+logic around it or have an abort function of another name, eg. `.cancel()` like
+on `requestAnimationFrame`
 
 ## License
 

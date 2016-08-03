@@ -1,13 +1,15 @@
 var assert = require('assert')
 
-module.exports = function (fn) {
+module.exports = function (fn, abortHandler) {
   var instance
+  if (abortHandler == null) abortHandler = function (inst) { return inst.abort() }
+  assert.strictEqual(typeof abortHandler, 'function', 'abortHandler should be a function')
 
   return function () {
-    if (instance) instance.abort()
+    if (instance) abortHandler(instance)
 
     instance = fn.apply(this, arguments)
-    assert.strictEqual(typeof instance.abort, 'function', 'returned instance does not have an abort function')
+
     return instance
   }
 }

@@ -27,15 +27,32 @@ test('made up test', function (assert) {
   }
 })
 
-test('doesn\'t have abort function', function (assert) {
-  var auto = autoAbort(mock)
+test('abortHandler', function (assert) {
+  assert.plan(1)
 
-  assert.throws(_ => auto())
-  assert.end()
+  var auto = autoAbort(mock, instance => instance.cancel())
+
+  auto(function () {
+    assert.pass()
+  })
+  auto(function () {
+    assert.pass()
+  })
 
   function mock (cb) {
-    return {abort: true}
+    var hasAborted = false
+
+    setTimeout(function () {
+      if (!hasAborted) cb()
+    }, 0)
+
+    return {cancel: function () { hasAborted = true }}
   }
+})
+
+test('throws', function (assert) {
+  assert.throws(_ => autoAbort(_ => {}, 'hello'))
+  assert.end()
 })
 
 test('real-world test', function (assert) {
