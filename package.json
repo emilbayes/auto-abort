@@ -1,6 +1,6 @@
 {
   "name": "auto-abort",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Only keep a single instance, aborting previous instances on subsequent calls",
   "main": "index.js",
   "scripts": {
